@@ -1,0 +1,2 @@
+def UpdateStock():
+    pass

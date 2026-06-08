@@ -11,7 +11,7 @@ class FileProcessor:
         self.MyDataFile = os.path.join(self.MyDataFolder, "inventory.csv") # lägger till filnamnet till sökvägen.
 
         # Fördefinerar en header för våran CSV-fil
-        self.MyHeader = ["Name", "Category", "Brand", "Price", "Inventory", "Expiry-Date", "Prescription", "Strength", "Dosage"]
+        self.MyHeader = ["Name", "Category", "Brand", "Price", "Stock", "ExpiryDate", "Prescription", "Strength", "Dosage"]
 
     # Module för att kontrollera om filen finns och skapa den utifall den saknas. 
     def CheckPath(self):
@@ -33,5 +33,5 @@ class FileProcessor:
     def SaveData(self, MyProducts):
         with open(self.MyDataFile, "w", newline="", encoding="utf-8") as content:
             writer = csv.DictWriter(content, fieldnames=self.MyHeader)
-        writer.writeheader()
-        writer.writerows(MyProducts)
+            writer.writeheader()
+            writer.writerows(MyProducts)
