@@ -1,4 +1,4 @@
-Name,Category,Maker,Price,Inventory,Expiry-Date,Prescription,Strength,Dosage
+Name,Category,Brand,Price,Inventory,Expiry-Date,Prescription,Strength,Dosage
 Alvedon 500,Smärtstillande,PharmaNord,49.90,120,2028-05-12,Nej,500 mg,Tablett
 Ibumax 400,Smärtstillande,MediCare,59.90,85,2027-11-20,Nej,400 mg,Tablett
 Näsfri,Allergi,Nordic Health,89.90,45,2027-08-15,Nej,10 mg/ml,Nässpray

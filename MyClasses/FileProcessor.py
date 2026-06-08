@@ -5,13 +5,13 @@ import os, csv
 
 class FileProcessor:
     def __init__(self):
-        # fördefinerar attributer för att kunna skapa sökvägen till fil och mapp.
+        # Fördefinerar attributer för att kunna skapa sökvägen till fil och mapp.
         self.MyFolder = os.path.dirname(os.path.abspath(__file__)) # Hittar vart huvudmappen finns
         self.MyDataFolder = os.path.join(self.MyFolder, "MyData") # Lägger till fillmappen till sökvägen
         self.MyDataFile = os.path.join(self.MyDataFolder, "inventory.csv") # lägger till filnamnet till sökvägen.
 
-        # fördefinerar en header för våran CSV-fil
-        self.MyHeader = ["Name", "Category", "Maker", "Price", "Inventory", "Expiry-Date", "Prescription", "Strength", "Dosage"]
+        # Fördefinerar en header för våran CSV-fil
+        self.MyHeader = ["Name", "Category", "Brand", "Price", "Inventory", "Expiry-Date", "Prescription", "Strength", "Dosage"]
 
     # Module för att kontrollera om filen finns och skapa den utifall den saknas. 
     def CheckPath(self):
@@ -29,7 +29,7 @@ class FileProcessor:
             reader = csv.DictReader(content)
             return list(reader)
 
-    #Module för att spara data till CSV.
+    # Module för att spara data till CSV.
     def SaveData(self, MyProducts):
         with open(self.MyDataFile, "w", newline="", encoding="utf-8") as content:
             writer = csv.DictWriter(content, fieldnames=self.MyHeader)

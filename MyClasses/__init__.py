@@ -1,5 +1,3 @@
-from .MyProducts import MyProducts
+from .MyProducts import Products, SpecialProducts, PrescriptionProducts
 from .FileProcessor import FileProcessor
-from .MyInventory import MyInvetory
-
-
+from .MyInventory import MyInventory
