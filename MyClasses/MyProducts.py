@@ -10,6 +10,7 @@ class Products:
         self.Strength = Strength
         self.Dosage = Dosage
 
+# Sub-Class för att separera receptbelagda produkter, ärver från "Products" och varnar användaren att recept behövs. 
 class PrescriptionProducts(Products):
     def __init__(self, Name, Category, Brand, Price, Stock, ExpiryDate, Strength, Dosage):
         super().__init__(Name, Category, Brand, Price, Stock, ExpiryDate, Strength, Dosage)
