@@ -16,5 +16,5 @@ class PrescriptionProducts(Products):
         super().__init__(Name, Category, Brand, Price, Stock, ExpiryDate, Strength, Dosage)
         self.RequiresPrescription = True # Vi använder True här för att det alltid gäller när vi skapar ett "PrecriptionsProducts"-objekt.
 
-        def PrescriptionWarning(self):
-            return f"Observera att {self.Name} är receptbelagt och kräver giltigt recept vid utlämning." # Skickar en varning om produkten är receptbelagd.
+    def PrescriptionWarning(self):
+        return f"Observera att {self.Name} är receptbelagt och kräver giltigt recept vid utlämning." # Skickar en varning om produkten är receptbelagd.

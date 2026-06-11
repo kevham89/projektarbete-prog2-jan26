@@ -35,6 +35,10 @@ class MyInventory():
         self.Products.append(ProductDictionary)
         self.FileProcessor.SaveData(self.Products)
 
+        if Prescription: # Om produkten är receptbelagd så skickar vi en varning till användaren
+            return NewProduct.PrescriptionWarning()
+        return None
+
     # Metod för att uppdatera antal i lager
     def UpdateStock(self, Name, Amount):
         for Product in self.Products:

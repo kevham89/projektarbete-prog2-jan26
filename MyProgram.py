@@ -22,6 +22,5 @@ def Start():
             break
         else:
             print("Ogiltigt Val.")
-
 Start()
 

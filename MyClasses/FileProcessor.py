@@ -7,7 +7,8 @@ class FileProcessor:
     def __init__(self):
         # Fördefinerar attributer för att kunna skapa sökvägen till fil och mapp.
         self.MyFolder = os.path.dirname(os.path.abspath(__file__)) # Hittar vart huvudmappen finns
-        self.MyDataFolder = os.path.join(self.MyFolder, "MyData") # Lägger till fillmappen till sökvägen
+        self.ProjectFolder = os.path.dirname(self.MyFolder) # dirname går upp ett steg i mappträdet så att vi hittar projekt-mappen.
+        self.MyDataFolder = os.path.join(self.ProjectFolder, "MyData") # Lägger till fillmappen till sökvägen
         self.MyDataFile = os.path.join(self.MyDataFolder, "inventory.csv") # lägger till filnamnet till sökvägen.
 
         # Fördefinerar en header för våran CSV-fil
@@ -25,7 +26,7 @@ class FileProcessor:
     def ReadData(self):
         self.CheckPath()
 
-        with open(self.MyDataFile, "r", encoding="utf-8-sig") as content:
+        with open(self.MyDataFile, "r", encoding="utf-8") as content:
             reader = csv.DictReader(content)
             return list(reader)
 
