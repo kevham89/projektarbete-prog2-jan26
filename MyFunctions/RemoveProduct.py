@@ -13,8 +13,8 @@ def RemoveProduct(Inventory): # funktionen tar emot "Inventory"
     print(f"Kategori: {Product['Category']}")
     print(f"Lagersaldo: {Product['Stock']}")
 
-    Confirm = input(f"Vill du ta bort {Product['Name']}? (Ja/Nej)") # Användaren bekräftar att detta är rätt innan vi plockar bort det.
-    if Confirm.lower() != "Ja":
+    Confirm = input(f"Vill du ta bort {Product['Name']}? (Ja/Nej)").lower() # Användaren bekräftar att detta är rätt innan vi plockar bort det.
+    if Confirm != "ja":
         print("Avbryter bortagningen.")
         return
     

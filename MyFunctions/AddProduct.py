@@ -22,7 +22,6 @@ def AddProduct(Inventory): # "Inventory länkar mot objektet vi skapade i "MyPro
     Dosage = input("Dosering: ")
     Prescription = input("Receptbelgad (Ja/Nej): ").lower() == "ja"
 
-    Inventory.AddProduct(Name, Category, Brand, Price, Stock, ExpiryDate, Strength, Dosage, Prescription)
     PrescriptionWarning = Inventory.AddProduct(Name, Category, Brand, Price, Stock, ExpiryDate, Strength, Dosage, Prescription)
     print(f"{Name} har lagts till!")
 
