@@ -7,7 +7,7 @@ def Start():
 
     while True:
         ShowMenu()
-        UserInput = input("Välj ett alternativ.")
+        UserInput = input("Välj ett alternativ. ")
 
         if UserInput == "1":
             AddProduct(Inventory)
