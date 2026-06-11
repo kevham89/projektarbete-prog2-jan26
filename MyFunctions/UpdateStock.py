@@ -1,4 +1,5 @@
-# Funktion för att uppdatera inventariet.
+# Funktion för att uppdatera lagret på en produkt (ropar på MyInventory.py)
+
 def UpdateStock(Inventory):
     Name = input("Sök på produkt: ")
     Results = Inventory.SearchProduct(Name)

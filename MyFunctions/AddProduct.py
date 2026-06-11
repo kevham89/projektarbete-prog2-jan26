@@ -1,3 +1,5 @@
+# Funktion för att lägga till en produkt (ropar på MyInventory.py)
+
 def AddProduct(Inventory): # "Inventory länkar mot objektet vi skapade i "MyProgram"
     Name = input("Produktnamn: ")
     Category = input("Kategori: ")
