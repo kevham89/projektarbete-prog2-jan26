@@ -25,7 +25,7 @@ class FileProcessor:
     def ReadData(self):
         self.CheckPath()
 
-        with open(self.MyDataFile, "r", encoding="utf-8") as content:
+        with open(self.MyDataFile, "r", encoding="utf-8-sig") as content:
             reader = csv.DictReader(content)
             return list(reader)
 

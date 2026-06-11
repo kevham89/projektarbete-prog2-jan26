@@ -13,7 +13,7 @@ def SearchProduct(Inventory): # funktionen tar emot "Inventory"
             print("----------------------------------------") # Ramar in varje enskild produkt.
             print(f"Namn: {Product['Name']}")
             print(f"Kategori {Product['Category']}")
-            print(f"Tillverkare: {Product['Tillverkare']}")
+            print(f"Tillverkare: {Product['Brand']}")
             print(f"Pris: {Product['Price']}")
             print(f"Lager: {Product['Stock']}")
             print(f"Utgångsdatum: {Product['ExpiryDate']}")
