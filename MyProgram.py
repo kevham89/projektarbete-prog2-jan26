@@ -11,7 +11,7 @@ FP = FileProcessor()
 Inventory = MyInventory(FP)
 
 # Header
-Header = tk.Label(root, text="Apotek")
+Header = tk.Label(root, text="Apotek", font=("Arial", 14, "bold" ))
 Header.pack(pady=10)
 
 # Skapar 2 frames, vänster & höger, och ramar in dessa i "Main". 
@@ -53,15 +53,15 @@ for RowIndex, HeaderText in enumerate(ListHeader):
 
 # RightFrame
 
-button1 = tk.Button(RightFrame, text="Lägg Till Produkt", width=20, command=lambda: AddProduct(Inventory, DicHeader, Tree, RefreshTree))
+button1 = tk.Button(RightFrame, text="Lägg Till Produkt", bg="green", fg="white", width=20, command=lambda: AddProduct(Inventory, DicHeader, Tree, RefreshTree))
 button1.pack(pady=5) # Fill "x" betyder att vi sträcker ut knappen från höger till vänster.
-button2 = tk.Button(RightFrame, text="Sök Efter Produkt", width=20, command=lambda: SearchProduct(Inventory, DicHeader, Tree))
+button2 = tk.Button(RightFrame, text="Sök Efter Produkt", bg="orange", fg="white", width=20, command=lambda: SearchProduct(Inventory, DicHeader, Tree))
 button2.pack(pady=5) 
-button3 = tk.Button(RightFrame, text="Updatera Lagersaldo", width=20, command=lambda: UpdateStock(Inventory, DicHeader, Tree, RefreshTree))
+button3 = tk.Button(RightFrame, text="Updatera Lagersaldo", bg="blue", fg="white", width=20, command=lambda: UpdateStock(Inventory, DicHeader, Tree, RefreshTree))
 button3.pack(pady=5) 
-button4 = tk.Button(RightFrame, text="Ta Bort Produkt", width=20, command=lambda: RemoveProduct(Inventory, DicHeader, Tree, RefreshTree))
+button4 = tk.Button(RightFrame, text="Ta Bort Produkt", bg="red", fg="white", width=20, command=lambda: RemoveProduct(Inventory, DicHeader, Tree, RefreshTree))
 button4.pack(pady=5) 
-button5 = tk.Button(RightFrame, text="Avsluta Program", width=20, command=root.destroy)
+button5 = tk.Button(RightFrame, text="Avsluta Program", bg="black", fg="white", width=20, command=root.destroy)
 button5.pack(pady=5) 
 
 
