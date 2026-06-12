@@ -1,26 +1,83 @@
+import tkinter as tk
+from tkinter import ttk, messagebox
 from MyClasses import FileProcessor, MyInventory
-from MyFunctions import ShowMenu, AddProduct, SearchProduct, UpdateStock, RemoveProduct
+from MyFunctions import ShowMenu, AddProduct, SearchProduct, UpdateStock, RemoveProduct, RefreshTree
 
-def Start():
-    FP = FileProcessor()
-    Inventory = MyInventory(FP)
+root = tk.Tk()
+root.title("Apotek")
+root.geometry("800x600")
 
-    while True:
-        ShowMenu()
-        UserInput = input("Välj ett alternativ. ")
+FP = FileProcessor()
+Inventory = MyInventory(FP)
 
-        if UserInput == "1":
-            AddProduct(Inventory)
-        elif UserInput == "2":
-            SearchProduct(Inventory)
-        elif UserInput == "3":
-            UpdateStock(Inventory)
-        elif UserInput == "4":
-            RemoveProduct(Inventory)
-        elif UserInput == "5":
-            print("Avslutar programmet, Tack för att du använder vårat program!")
-            break
-        else:
-            print("Ogiltigt Val.")
-Start()
+# Header
+Header = tk.Label(root, text="Apotek")
+Header.pack(pady=10)
 
+# Skapar 2 frames, vänster & höger, och ramar in dessa i "Main". 
+MainFrame = tk.Frame(root)
+MainFrame.pack(fill="x")
+LeftFrame = tk.Frame(MainFrame)
+LeftFrame.grid(row=0, column=0, padx=10, pady=10, sticky="n")
+RightFrame = tk.Frame(MainFrame)
+RightFrame.grid(row=0, column=1, pady=10, padx=10, sticky="n")
+
+MainFrame.columnconfigure(0, weight=1)
+MainFrame.columnconfigure(1, weight=1)
+
+# LeftFrame
+UserInput = tk.Frame(LeftFrame)
+UserInput.pack()
+
+DicHeader = {}
+
+ListHeader = [
+    "Namn",
+    "Kategori",
+    "Tillverkare",
+    "Pris",
+    "Lagersaldo",
+    "Utgångsdatum",
+    "Styrka",
+    "Dosering",
+    "Receptbelagd",
+]
+
+for RowIndex, HeaderText in enumerate(ListHeader):
+    tk.Label(UserInput, text=HeaderText, width=15, anchor="w").grid(row=RowIndex, column=0, pady=2)
+
+    entry = tk.Entry(UserInput, width=25)
+    entry.grid(row=RowIndex, column=1, pady=2)
+
+    DicHeader[HeaderText] = entry
+
+# RightFrame
+
+button1 = tk.Button(RightFrame, text="Lägg Till Produkt", width=20, command=lambda: AddProduct(Inventory, DicHeader, Tree, RefreshTree))
+button1.pack(pady=5) # Fill "x" betyder att vi sträcker ut knappen från höger till vänster.
+button2 = tk.Button(RightFrame, text="Sök Efter Produkt", width=20, command=lambda: SearchProduct(Inventory, DicHeader, Tree))
+button2.pack(pady=5) 
+button3 = tk.Button(RightFrame, text="Updatera Lagersaldo", width=20, command=lambda: UpdateStock(Inventory, DicHeader, Tree, RefreshTree))
+button3.pack(pady=5) 
+button4 = tk.Button(RightFrame, text="Ta Bort Produkt", width=20, command=lambda: RemoveProduct(Inventory, DicHeader, Tree, RefreshTree))
+button4.pack(pady=5) 
+button5 = tk.Button(RightFrame, text="Avsluta Program", width=20, command=root.destroy)
+button5.pack(pady=5) 
+
+
+# Tree (Sträcker sig över båda frames).
+
+TreeFrame = tk.Frame(root)
+TreeFrame.pack(fill="both", expand=True, padx=10, pady=10)
+
+Tree = ttk.Treeview(TreeFrame, columns=("Name","Category","Brand","Price","Stock","ExpiryDate","Prescription","Strength","Dosage"), show="headings")
+
+for Col in Tree["columns"]:
+    Tree.heading(Col, text=Col, anchor="w")
+    Tree.column(Col, width=80)
+
+Tree.pack(fill="both", expand=True)
+
+RefreshTree(Tree, Inventory)
+
+root.mainloop()
