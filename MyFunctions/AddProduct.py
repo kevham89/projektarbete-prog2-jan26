@@ -1,30 +1,34 @@
 # Funktion för att lägga till en produkt (ropar på MyInventory.py)
 
-def AddProduct(Inventory): # "Inventory länkar mot objektet vi skapade i "MyProgram"
-    Name = input("Produktnamn: ")
-    Category = input("Kategori: ")
-    Brand = input("Tillverkare: ")
+# Behöver importera messagebox även här för att det ska fungera.
+from tkinter import messagebox
+
+def AddProduct(Inventory, DicHeader, Tree, RefreshTree): # "Inventory länkar mot objektet vi skapade i "MyProgram"
+    Name = DicHeader["Namn"].get()
+    Category = DicHeader["Kategori"].get()
+    Brand = DicHeader["Tillverkare"].get()
 
     try: # säkerställer att vi får in ett tal
-        Price = float(input("Pris: "))
+        Price = float(DicHeader["Pris"].get())
     except ValueError:
-        print("Ogiltigt pris, ange ett tal.")
+        messagebox.showerror("Fel", "Ogiltigt pris, ange ett tal.")
         return
     
     try: # säkerställer att vi får in ett tal
-        Stock = int(input("Antal i lager: "))
+        Stock = int(DicHeader["Lagersaldo"].get())
     except ValueError:
-        print("Ogiltigt antal, ange ett tal.")
+        messagebox.showerror("Fel", "Ogiltigt antal, ange ett tal.")
         return
     
-    ExpiryDate = input("Utgångsdatum (ÅÅÅÅ-MM-DD): ")
-    Strength = input("Styrka: ")
-    Dosage = input("Dosering: ")
-    Prescription = input("Receptbelgad (Ja/Nej): ").lower() == "ja"
+    ExpiryDate = DicHeader["Utgångsdatum"].get()
+    Strength = DicHeader["Styrka"].get()
+    Dosage = DicHeader["Dosering"].get()
+    Prescription = DicHeader["Receptbelagd"].get().lower() == "ja"
 
     PrescriptionWarning = Inventory.AddProduct(Name, Category, Brand, Price, Stock, ExpiryDate, Strength, Dosage, Prescription)
-    print(f"{Name} har lagts till!")
+
+    RefreshTree(Tree, Inventory)
 
     if PrescriptionWarning:
-        print(PrescriptionWarning)
+        messagebox.showwarning("Receptbelagd produkt", PrescriptionWarning)
 
